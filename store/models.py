@@ -18,7 +18,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=250)
     price = models.DecimalField(max_digits=4, decimal_places=2)
-    categories = models.ManyToManyField(Category)
+    categories = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='images/')
 
     class Meta:
